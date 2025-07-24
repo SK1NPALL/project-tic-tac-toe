@@ -18,7 +18,7 @@
   background: #faf8ff;
 }
 
-.board {
+.square-container {
   width: min(90vmin, 450px);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
