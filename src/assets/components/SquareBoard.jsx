@@ -1,18 +1,24 @@
 // src/components/SquareBoard.jsx
-import React from 'react';
 
-export default function SquareBoard({ board, onSquareClick }) {
+import React from 'react'
+
+function SquareBoard() {
   return (
-    <div className="board">
-      {board.map((value, idx) => (
-        <div
-          key={idx}
-          className="square"
-          onClick={() => onSquareClick(idx)}
-        >
-          {value}
-        </div>
-      ))}
+    
+    <div className="square-container">
+
+      {/* sq1 */}
+      {/* sq1 */}
+      {/* sq1 */}
+      {/* sq1 */}
+      {/* sq1 */}
+      {/* sq1 */}
+      {/* sq1 */}
+      {/* sq1 */}
+      {/* sq9 */}
+
     </div>
-  );
+  )
 }
+
+export default SquareBoard
