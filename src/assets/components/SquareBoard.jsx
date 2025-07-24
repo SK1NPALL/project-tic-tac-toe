@@ -34,3 +34,5 @@ function SquareBoard({ board, onSquareClick }) {
     </div>
   );
 }
+
+export default SquareBoard
