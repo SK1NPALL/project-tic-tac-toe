@@ -1,22 +1,6 @@
 // src/components/SquareBoard.jsx
 import React from 'react';
 
-<<<<<<< Updated upstream
-export default function SquareBoard({ board, onSquareClick }) {
-  return (
-    <div className="board">
-      {board.map((value, idx) => (
-        <div
-          key={idx}
-          className="square"
-          onClick={() => onSquareClick(idx)}
-        >
-          {value}
-        </div>
-      ))}
-=======
-import React from 'react';
-
 function SquareBoard({ board, onSquareClick }) {
   return (
     <div className="square-container">
@@ -47,7 +31,6 @@ function SquareBoard({ board, onSquareClick }) {
       <div className="square sq9" onClick={() => onSquareClick(8)}>
         {board[8]}
       </div>
->>>>>>> Stashed changes
     </div>
   );
 }
