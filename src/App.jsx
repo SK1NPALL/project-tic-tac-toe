@@ -9,6 +9,17 @@ function App() {
   const [turn,setTurn] = useState('X');
   const [board,setBoard] = useState(['','','','','','','','','']);
 
+  function handleClick(n) {
+
+    const newBoard = [...board];
+
+    newBoard[n] = turn;
+    setBoard = newBoard;
+    switchTurn();
+    isWin();
+
+  } 
+
   function switchTurn() {
     
     setTurn(turn === 'X' ? 'O' : 'X');
