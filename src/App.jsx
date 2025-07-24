@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import SquareBoard from './assets/components/SquareBoard'
 
 function App() {
   // Put varible or function here
@@ -9,6 +10,7 @@ function App() {
   return (
     <>
       {/* Put components here */}
+      <SquareBoard></SquareBoard>
     </>
   )
 }
