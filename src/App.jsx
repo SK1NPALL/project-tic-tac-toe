@@ -2,9 +2,15 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import GameReset from './assets/components/GameReset.jsx'
+import WinnerBanner from './assets/components/WinnerBanner.jsx'
 
 function App() {
-  // Put varible or function here
+  // Put varible or function here 
+  
+  function handleClick() {
+    setTurn(turn === 'X' ? 'O' : 'X'); // เปลี่ยนตาเล่นระหว่าง X กับ O
+  }
 
   const [turn,setTurn] = useState('X'); // ตัวแปรเปลี่ยนเทิร์น
   const [board,setBoard] = useState(['','','','','','','','','']); // ตัวเก็บค่าในตาราง
@@ -109,8 +115,17 @@ function App() {
 
   return (
     <>
-      {/* Put components here */}
-    </>
+    <div class="container">
+    <div><p>ตอนนี้เป็นตาของ: {turn}</p>
+      <button onClick={handleClick} class="turn_show">Click</button>
+    </div>
+
+    <WinnerBanner/>
+    
+    
+    <GameReset/>
+    </div>
+   </>
   )
 }
 
