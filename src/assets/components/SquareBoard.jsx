@@ -1,7 +1,7 @@
 // src/components/SquareBoard.jsx
 import React from 'react';
 
-function SquareBoard({}) {
+function SquareBoard() {
   return (
     <div className="square-container">
       <div className="square sq1" onClick={() => handleClick(0)}>

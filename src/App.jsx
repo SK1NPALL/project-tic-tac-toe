@@ -2,6 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+
+import TurnShow from './assets/components/TurnShow.jsx'
 import SquareBoard from './assets/components/SquareBoard'
 import GameReset from './assets/components/GameReset.jsx'
 import WinnerBanner from './assets/components/WinnerBanner.jsx'
@@ -116,7 +118,8 @@ function App() {
 
   return (
     <>
-      {/* Put components here */}
+      
+      <TurnShow/>
       <SquareBoard></SquareBoard>
       <WinnerBanner/>
       <GameReset/>
