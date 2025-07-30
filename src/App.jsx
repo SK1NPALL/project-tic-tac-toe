@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import SquareBoard from './assets/components/SquareBoard'
 import GameReset from './assets/components/GameReset.jsx'
 import WinnerBanner from './assets/components/WinnerBanner.jsx'
 
@@ -115,16 +116,10 @@ function App() {
 
   return (
     <>
-    <div class="container">
-    <div><p>ตอนนี้เป็นตาของ: {turn}</p>
-      <button onClick={handleClick} class="turn_show">Click</button>
-    </div>
-
-    <WinnerBanner/>
-    
-    
-    <GameReset/>
-    </div>
+      {/* Put components here */}
+      <SquareBoard></SquareBoard>
+      <WinnerBanner/>
+      <GameReset/>
    </>
   )
 }
