@@ -20,8 +20,8 @@ function App() {
 
     newBoard[n] = turn; // ให้บอร์ดตำแหน่ง n (argument ที่รับเข้ามา) มีค่าตามตัวแปร turn
     setBoard(newBoard); // ทำให้ board จริงๆมีค่าเท่ากับ newboard
-    switchTurn(); 
-    isWin();
+
+    switchTurn(); // สลับเทิร์น
 
   } 
 
