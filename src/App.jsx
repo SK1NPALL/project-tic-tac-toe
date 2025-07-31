@@ -23,7 +23,7 @@ function App() {
     const newBoard = [...board]; // สร้างบอร์ดใหม่ มาเก็บค่าบอร์ด useState
 
     newBoard[n] = turn; // ให้บอร์ดตำแหน่ง n (argument ที่รับเข้ามา) มีค่าตามตัวแปร turn
-    setBoard = newBoard; // ทำให้ board จริงๆมีค่าเท่ากับ newboard
+    setBoard(newBoard); // ทำให้ board จริงๆมีค่าเท่ากับ newboard
     switchTurn(); 
     isWin();
 
@@ -120,7 +120,7 @@ function App() {
     <>
       
       <TurnShow/>
-      <SquareBoard></SquareBoard>
+      <SquareBoard board={board} handleClick={handleClick} />
       <WinnerBanner/>
       <GameReset/>
    </>
