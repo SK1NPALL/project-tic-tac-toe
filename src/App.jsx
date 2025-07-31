@@ -11,10 +11,6 @@ import WinnerBanner from './assets/components/WinnerBanner.jsx'
 function App() {
   // Put varible or function here 
   
-  function handleClick() {
-    setTurn(turn === 'X' ? 'O' : 'X'); // เปลี่ยนตาเล่นระหว่าง X กับ O
-  }
-
   const [turn,setTurn] = useState('X'); // ตัวแปรเปลี่ยนเทิร์น
   const [board,setBoard] = useState(['','','','','','','','','']); // ตัวเก็บค่าในตาราง
 
