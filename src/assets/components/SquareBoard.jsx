@@ -3,6 +3,7 @@ import React from 'react';
 
 function SquareBoard(props){
   return (
+    <div className = "board">
     <div className="square-container">
       <div className="square sq1" onClick={() => props.handleClick(0)}>
         {props.board[0]}
@@ -31,6 +32,7 @@ function SquareBoard(props){
       <div className="square sq9" onClick={() => props.handleClick(8)}>
         {props.board[8]}
       </div>
+    </div>
     </div>
   );
 }
