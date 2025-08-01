@@ -1,15 +1,13 @@
-import React from 'react'
-import { useState } from 'react';
+import React from 'react';
 
 
-
-function TurnShow() {
-
+function TurnShow({ turn}) {
   return (
-      <>
-        <p>ตอนนี้เป็นตาของ: </p>
-      </>
+    <div className="turn-container">
+      <p className="turn-text">ตอนนี้เป็นตาของ: <span>{turn}</span></p>
+
+    </div>
   );
 }
 
-export default TurnShow
+export default TurnShow;
