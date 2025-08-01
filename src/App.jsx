@@ -31,83 +31,127 @@ function App() {
 
   }
 
+  function arraySameCheck(arr) { //check ว่า ทั้ง array นั้นเหมือนกันไหม
+
+    for(let i = 0 ; i < arr.length ; i++) {
+
+      for(let j = 0; j < arr.length ; j++) {
+
+        if (arr[i] !== arr[j]) {
+
+          
+          return false; //ถ้าเจอไม่เหมือน return false
+        }
+        
+      }
+    }
+
+    if (arr.includes('')) { //ถ้ามีฟันหนูซักอันใน array ที่ส่งเข้ามา return false
+
+      return false;
+  
+    }
+
+    return true; //ถ้า array เหมือนกันทั้งหมด return true
+
+  }
+
   function isWin() { //ฟังชันด์เช็คถ้าชนะตรงเงื่อนไขจพ return true
+    
+    let row = board.length ** 0.5; // รูท 2 กับจำนวน index ใน array
+    let cnt = -1; //เช็คแนวนอน
+    let cntCon2 = -row; //เช็คแนวตั้ง
+    let cntCon3 = -row -1 //เช็คแนวเฉียงขวา
+    let cntCon4 = 0; //เช็คแนวเฉียงซ้าย
+    const checkBoard = [];
 
+    // เช็คแนวนอน
+    for (let i = 0 ; i < row ; i++){ // column
 
-    // เงื่อนไข X ชนะ
-
-      //X ทั้งหมดในแนวนอน
-    if (board[0] === 'X' || board[1] === 'X' || board[2] === 'X'){
-
-      return true;
-
-    }else if(board[3] === 'X' || board[4] === 'X' || board[5] === 'X'){
-
-      return true;
-
-    }else if(board[6] === 'X' || board[7] === 'X' || board[8] === 'X'){
-
-      return true;
-
-      //X ทั้งหมดในแนวเฉียง
-    }else if(board[0] === 'X' || board[4] === 'X' || board[8] === 'X'){
-
-      return true;
-
-    }else if(board[2] === 'X' || board[4] === 'X' || board[6] === 'X'){
-
-      return true;
-
-      // X ทั้งหมดในแนวตั้ง
-    }else if(board[0] === 'X' || board[3] === 'X' || board[6] === 'X'){
-
-      return true;
-
-    }else if(board[1] === 'X' || board[4] === 'X' || board[7] === 'X'){
-
-      return true;
-
-    }else if(board[2] === 'X' || board[5] === 'X' || board[8] === 'X'){
-
-      return true;
-
-    // เงื่อนไข O ชนะ
-
-      //O ทั้งหมดในแนวนอน
-    }else if (board[0] === 'O' || board[1] === 'O' || board[2] === 'O'){
-
-      return true;
-
-    }else if(board[3] === 'O' || board[4] === 'O' || board[5] === 'O'){
-
-      return true;
-
-    }else if(board[6] === 'O' || board[7] === 'O' || board[8] === 'O'){
-
-      return true;
-
-      // O ทั้งหมดในแนวเฉียง
-    }else if(board[0] === 'O' || board[4] === 'O' || board[8] === 'O'){
-
-      return true;
-
-    }else if(board[2] === 'O' || board[4] === 'O' || board[6] === 'O'){
-
-      return true;
-
-      // O ทั้งหมดในแนวตั้ง
-    }else if(board[0] === 'O' || board[3] === 'O' || board[6] === 'O'){
-
-      return true;
-
-    }else if(board[1] === 'O' || board[4] === 'O' || board[7] === 'O'){
-
-      return true;
-
-    }else if(board[2] === 'O' || board[5] === 'O' || board[8] === 'O'){
-
-      return true;
+      for (let j = 0 ; j < row ; j++){ // row  
       
+        cnt += 1; 
+        
+        checkBoard.push(board[cnt]);
+      
+      }
+
+      if (arraySameCheck(checkBoard) === true){ //เช็คว่า checkBoard ทั้งarrayเหมือนกันไหม 
+        
+        console.log('แนวนอนชนะ');
+        return true;
+
+      }
+      
+      checkBoard.length = 0; // reset array
+      
+      
+    }
+
+    //เช็คแนวตั้ง
+    for (let i = 0 ; i < row ; i++){ // column
+
+      for (let j = 0 ; j < row ; j++){ // row  
+      
+        cntCon2 += row; 
+        
+        checkBoard.push(board[cntCon2]);
+      
+      }
+      cntCon2 = -row + (i+1);
+
+      if (arraySameCheck(checkBoard) === true){ //เช็คว่า checkBoard ทั้งarrayเหมือนกันไหม 
+        
+        console.log('แนวตั้งชนะ')
+        return true;
+
+      }
+      
+      checkBoard.length = 0; // reset array
+      
+    }
+
+    //เช็คแนวเฉียงขวา
+    for (let i = 0 ; i < row ; i++){ // column
+     
+      cntCon4 += (row-1);
+        
+      checkBoard.push(board[cntCon4]);
+      
+    }
+    if (arraySameCheck(checkBoard) === true){ //เช็คว่า checkBoard ทั้งarrayเหมือนกันไหม 
+        
+      console.log('เฉียงซ้ายชนะ');
+      return true;
+
+    }
+      
+    checkBoard.length = 0; // reset array
+    
+    //เช็คแนวเฉียงซ้าย
+    for (let i = 0 ; i < row ; i++){ // column
+     
+      cntCon3 += (row+1);
+        
+      checkBoard.push(board[cntCon3]);
+      
+    }
+    if (arraySameCheck(checkBoard) === true){ //เช็คว่า checkBoard ทั้งarrayเหมือนกันไหม 
+        
+      console.log('เฉียงขวาชนะ');
+      return true;
+
+    }
+      
+    checkBoard.length = 0; // reset array
+
+    //เสมอ
+
+    if (!board.includes('')) { //ถ้าใน board ไม่มีช่องว่าง และไม่เข้าเงื่อนไขการชนะ
+
+      console.log('เสมอ');
+      return 'draw';
+
     }
       
   }
@@ -119,6 +163,7 @@ function App() {
       <SquareBoard board={board} handleClick={handleClick} />
       <WinnerBanner/>
       <GameReset/>
+
    </>
   )
 }
