@@ -144,10 +144,18 @@ function App() {
     }
       
     checkBoard.length = 0; // reset array
+
+    //เสมอ
+
+    if (!board.includes('')) { //ถ้าใน board ไม่มีช่องว่าง และไม่เข้าเงื่อนไขการชนะ
+
+      console.log('เสมอ');
+      return 'draw';
+
+    }
       
   }
 
-  // console.log(isWin());
   return (
     <>
       
@@ -156,7 +164,6 @@ function App() {
       <WinnerBanner/>
       <GameReset/>
 
-      {isWin()}
    </>
   )
 }
