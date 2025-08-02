@@ -5,23 +5,30 @@ import './App.css'
 
 import TurnShow from './assets/components/TurnShow.jsx'
 import SquareBoard from './assets/components/SquareBoard'
-import GameReset from './assets/components/GameReset.jsx'
 import WinnerBanner from './assets/components/WinnerBanner.jsx'
+import ResetButton from './assets/components/ResetButton.jsx'
 
 function App() {
   // Put varible or function here 
-  
+
+  const [winner, setWinner] = useState(null); // ตัวแปรสำหรับแสดงผลการชนะ
   const [turn,setTurn] = useState('X'); // ตัวแปรเปลี่ยนเทิร์น
   const [board,setBoard] = useState(['','','','','','','','','']); // ตัวเก็บค่าในตาราง
 
   function handleClick(n) {
-
+    
+    if (board[n] !== '' || winner) return; // ห้ามเล่นถ้าช่องไม่ว่าง หรือเกมจบแล้ว
     const newBoard = [...board]; // สร้างบอร์ดใหม่ มาเก็บค่าบอร์ด useState
 
     newBoard[n] = turn; // ให้บอร์ดตำแหน่ง n (argument ที่รับเข้ามา) มีค่าตามตัวแปร turn
     setBoard(newBoard); // ทำให้ board จริงๆมีค่าเท่ากับ newboard
 
-    switchTurn(); // สลับเทิร์น
+    if (isWin()) { //ถ้าเช็คแล้วมีการวางตำแหน่งที่ตรงเงื่อนไขชนะจะแสดงว่าชนะ 
+      setWinner(turn); 
+    } 
+    else {
+      switchTurn();
+    }
 
   } 
 
@@ -31,7 +38,7 @@ function App() {
 
   }
 
-  function arraySameCheck(arr) { //check ว่า ทั้ง array นั้นเหมือนกันไหม
+  function arraySameCheck(arr) { //check ว่า ทั้ง array นั้นเหมือนกันไหม (ใช้ร่วมกับ isWin())
 
     for(let i = 0 ; i < arr.length ; i++) {
 
@@ -153,17 +160,25 @@ function App() {
       return 'draw';
 
     }
-      
+      return false
   }
+
+  function handleReset(){
+    setBoard(['', '', '', '', '', '', '', '', '']);
+    setTurn('X');
+    setWinner(null);
+  }
+
 
   return (
     <>
       
-      <TurnShow/>
+      <TurnShow turn={turn} />
+      <ResetButton onReset={handleReset} />
       <SquareBoard board={board} handleClick={handleClick} />
-      <WinnerBanner/>
-      <GameReset/>
-
+      <WinnerBanner winner={winner} />
+      
+      
    </>
   )
 }
