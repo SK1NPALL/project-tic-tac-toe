@@ -23,11 +23,11 @@ function App() {
     newBoard[n] = turn; // ให้บอร์ดตำแหน่ง n (argument ที่รับเข้ามา) มีค่าตามตัวแปร turn
     setBoard(newBoard); // ทำให้ board จริงๆมีค่าเท่ากับ newboard
 
-    if (isWin(newBoard, turn)) { //ถ้าเช็คแล้วมีการวางตำแหน่งที่ตรงเงื่อนไขชนะจะแสดงว่าชนะ 
-    setWinner(turn); 
-      } 
+    if (isWin()) { //ถ้าเช็คแล้วมีการวางตำแหน่งที่ตรงเงื่อนไขชนะจะแสดงว่าชนะ 
+      setWinner(turn); 
+    } 
     else {
-    switchTurn();
+      switchTurn();
     }
 
   } 
@@ -38,7 +38,7 @@ function App() {
 
   }
 
-  function arraySameCheck(arr) { //check ว่า ทั้ง array นั้นเหมือนกันไหม
+  function arraySameCheck(arr) { //check ว่า ทั้ง array นั้นเหมือนกันไหม (ใช้ร่วมกับ isWin())
 
     for(let i = 0 ; i < arr.length ; i++) {
 
@@ -177,7 +177,6 @@ function App() {
       <ResetButton onReset={handleReset} />
       <SquareBoard board={board} handleClick={handleClick} />
       <WinnerBanner winner={winner} />
-      
       
       
    </>
